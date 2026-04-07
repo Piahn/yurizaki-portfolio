@@ -321,16 +321,16 @@ onUnmounted(() => {
   </div>
 
   <!-- NAVBAR (morphing: full-width → rounded pill on scroll) -->
-  <div class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" :class="isScrolled ? 'px-4 pt-3' : 'px-0 pt-0'">
+  <div class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" :class="isScrolled ? 'px-3 pt-2 md:px-4 md:pt-3' : ''">
     <header
       class="mx-auto transition-all duration-500 backdrop-blur-xl"
       :class="[
         isScrolled
-          ? 'max-w-4xl rounded-2xl border border-purple-500/20 bg-[#0f0d1a]/90 shadow-lg shadow-purple-500/5'
+          ? 'max-w-full md:max-w-4xl rounded-xl md:rounded-2xl border border-purple-500/20 bg-[#0f0d1a]/95 shadow-lg shadow-purple-500/5'
           : 'max-w-full rounded-none border-b border-purple-900/30 bg-[#07060e]/80'
       ]"
     >
-      <div class="flex items-center justify-between px-6 py-3 transition-all duration-500" :class="isScrolled ? 'py-2.5' : 'py-4'">
+      <div class="flex items-center justify-between px-4 py-2.5 md:px-6 transition-all duration-500" :class="isScrolled ? 'py-2 md:py-2.5' : 'py-3 md:py-4'">
         <a href="#" class="nav-animate flex items-center gap-2 font-extrabold transition-all duration-300" :class="isScrolled ? 'text-xl' : 'text-2xl'">
           <span class="transition-all duration-300" :class="isScrolled ? 'text-2xl' : 'text-3xl'">⚔️</span>
           <span class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Yurizaki</span>
@@ -384,24 +384,24 @@ onUnmounted(() => {
       <p class="hero-desc mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
         Jelajahi dungeon, kalahkan monster, kumpulkan item legendaris, dan jadilah hunter terkuat — semuanya langsung dari WhatsApp! 🗡️
       </p>
-      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href="#" class="hero-cta magnetic-btn group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-purple-500/25 hover:shadow-purple-500/40 transition-all animate-pulse-glow">
+      <div class="mt-8 md:mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+        <a href="#" class="hero-cta magnetic-btn group relative inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-xl shadow-purple-500/25 hover:shadow-purple-500/40 transition-all animate-pulse-glow">
           ⚔️ Mulai Petualangan
         </a>
-        <a href="#gameplay" @click.prevent="scrollTo('#gameplay')" class="hero-cta magnetic-btn inline-flex items-center gap-2 rounded-xl border border-slate-700 px-8 py-4 text-base font-semibold text-slate-300 hover:border-purple-500/50 hover:text-white transition-all">
+        <a href="#gameplay" @click.prevent="scrollTo('#gameplay')" class="hero-cta magnetic-btn inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-slate-300 hover:border-purple-500/50 hover:text-white transition-all">
           📖 Lihat Gameplay
         </a>
       </div>
       <!-- Stats -->
-      <div class="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-8 sm:grid-cols-4">
+      <div class="mx-auto mt-10 md:mt-16 grid max-w-3xl grid-cols-4 gap-4 sm:gap-8">
         <div v-for="s in [
           { v: '50K+', l: 'Players' },
-          { v: '100', l: 'Dungeon Floors' },
+          { v: '100', l: 'Floors' },
           { v: '500+', l: 'Items' },
           { v: '24/7', l: 'Online' },
         ]" :key="s.l" class="hero-stat text-center">
-          <div class="text-2xl font-extrabold text-white sm:text-3xl">{{ s.v }}</div>
-          <div class="mt-1 text-xs font-medium text-slate-500 sm:text-sm">{{ s.l }}</div>
+          <div class="text-xl font-extrabold text-white sm:text-2xl md:text-3xl">{{ s.v }}</div>
+          <div class="mt-0.5 text-[10px] font-medium text-slate-500 sm:text-xs md:text-sm">{{ s.l }}</div>
         </div>
       </div>
     </div>
@@ -457,7 +457,7 @@ onUnmounted(() => {
           </div>
         </div>
         <!-- Chat mockup -->
-        <div class="gsap-chat-mockup relative">
+        <div class="gsap-chat-mockup relative overflow-hidden">
           <div class="overflow-hidden rounded-2xl border border-purple-900/30 bg-[#0f0d1a] shadow-2xl">
             <div class="flex items-center gap-3 border-b border-purple-900/30 bg-[#1a1528] px-4 py-3">
               <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-lg">⚔️</div>
@@ -525,29 +525,28 @@ onUnmounted(() => {
       </div>
     </div>
   </section>
-
   <!-- LEADERBOARD -->
-  <section id="leaderboard" class="relative py-24">
-    <div class="mx-auto max-w-4xl px-6">
+  <section id="leaderboard" class="relative py-16 md:py-24">
+    <div class="mx-auto max-w-4xl px-4 md:px-6">
       <div class="gsap-section-header mx-auto max-w-2xl text-center">
         <span class="text-sm font-semibold uppercase tracking-widest text-purple-400">Leaderboard</span>
-        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl md:text-4xl">
           Top <span class="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">Hunters</span> 🏆
         </h2>
       </div>
-      <div class="mt-12 overflow-hidden rounded-2xl border border-purple-900/30 bg-[#0f0d1a]/80 backdrop-blur-sm">
-        <div class="grid grid-cols-5 gap-4 border-b border-purple-900/30 px-6 py-3 text-xs font-bold uppercase tracking-wider text-slate-500">
-          <span>Rank</span><span>Player</span><span>Level</span><span>Class</span><span class="text-right">Power</span>
+      <div class="mt-8 md:mt-12 overflow-hidden rounded-xl md:rounded-2xl border border-purple-900/30 bg-[#0f0d1a]/80 backdrop-blur-sm">
+        <div class="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-4 border-b border-purple-900/30 px-4 sm:px-6 py-2.5 sm:py-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">
+          <span>Rank</span><span>Player</span><span class="hidden sm:block">Level</span><span class="hidden sm:block">Class</span><span class="text-right">Power</span>
         </div>
         <div v-for="p in leaderboard" :key="p.rank"
-          class="gsap-lb-row grid grid-cols-5 gap-4 items-center px-6 py-4 border-b border-purple-900/20 transition-colors hover:bg-purple-900/10"
+          class="gsap-lb-row grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-4 items-center px-4 sm:px-6 py-3 sm:py-4 border-b border-purple-900/20 transition-colors hover:bg-purple-900/10"
           :class="p.rank <= 3 ? 'bg-purple-900/5' : ''"
         >
-          <span class="text-lg font-extrabold" :class="p.rank === 1 ? 'text-amber-400' : p.rank === 2 ? 'text-slate-300' : p.rank === 3 ? 'text-amber-600' : 'text-slate-500'">{{ p.medal || "#" + p.rank }}</span>
-          <span class="font-bold text-white text-sm">{{ p.name }}</span>
-          <span class="text-amber-400 font-bold text-sm">Lv.{{ p.level }}</span>
-          <span class="text-purple-400 text-sm">{{ p.cls }}</span>
-          <span class="text-right text-sm font-bold text-emerald-400">{{ p.power }}</span>
+          <span class="text-base sm:text-lg font-extrabold" :class="p.rank === 1 ? 'text-amber-400' : p.rank === 2 ? 'text-slate-300' : p.rank === 3 ? 'text-amber-600' : 'text-slate-500'">{{ p.medal || "#" + p.rank }}</span>
+          <span class="font-bold text-white text-xs sm:text-sm truncate">{{ p.name }}</span>
+          <span class="hidden sm:block text-amber-400 font-bold text-sm">Lv.{{ p.level }}</span>
+          <span class="hidden sm:block text-purple-400 text-sm">{{ p.cls }}</span>
+          <span class="text-right text-xs sm:text-sm font-bold text-emerald-400">{{ p.power }}</span>
         </div>
       </div>
     </div>
